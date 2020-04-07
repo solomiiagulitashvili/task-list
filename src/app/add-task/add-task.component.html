@@ -1,0 +1,51 @@
+<div class="create-task">
+  <h2>Create new task</h2>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div class="form">
+      <span>Task title</span>
+      <span class="ui-float-label">
+        <input
+          id="title"
+          type="text"
+          size="60"
+          pInputText
+          class="form-control"
+          formControlName="title"
+        />
+        <label for="title">Task title</label>
+      </span>
+      <span>Category</span>
+      <p-dropdown
+        [options]="categories"
+        optionLabel="name"
+        formControlName="selectedCategory"
+      ></p-dropdown>
+      <p-fieldset legend="Steps">
+        <input
+          id="steps"
+          type="number"
+          size="60"
+          pInputText
+          class="form-control number"
+          formControlName="steps"
+        />
+      </p-fieldset>
+      <p-fieldset legend="Difficulty level">
+        <input
+          id="level"
+          type="number"
+          size="60"
+          pInputText
+          class="form-control number"
+          formControlName="level"
+        />
+      </p-fieldset>
+      <button
+        pButton
+        type="submit"
+        label="Create task"
+        class="ui-button-raised create-btn"
+      ></button>
+    </div>
+  </form>
+</div>
