@@ -1,0 +1,21 @@
+<div class="task-item">
+  <h3>{{ task.title }}</h3>
+  <p>{{ task.category }}</p>
+  <div class="progress-wrapper">
+    <p-progressBar [value]="task.progress"></p-progressBar>
+    <div class="btns-wrapper">
+      <p-button icon="pi pi-plus" (click)="onAddProgress(task.id)"></p-button>
+      <p-button
+        icon="pi pi-minus"
+        (click)="onRemoveProgress(task.id)"
+      ></p-button>
+      <button
+        pButton
+        type="button"
+        icon="pi pi-times"
+        class="ui-button-danger"
+        (click)="onDeleteTask(task.id)"
+      ></button>
+    </div>
+  </div>
+</div>

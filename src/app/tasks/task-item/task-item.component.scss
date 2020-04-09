@@ -1,0 +1,16 @@
+.progress-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 95%;
+  align-items: center;
+  p-progressbar {
+    flex-grow: 35;
+  }
+  .btns-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}

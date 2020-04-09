@@ -1,1 +1,5 @@
-<p>completed-tasks works!</p>
+<div class="completedTasks">
+  <ul class="task-list" *ngFor="let task of completedTasks$ | async">
+    <app-task-item [task]="task"></app-task-item>
+  </ul>
+</div>

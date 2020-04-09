@@ -6,4 +6,5 @@ export interface ITask {
   steps: number;
   level: number;
   category: string;
+  progress: number;
 }
