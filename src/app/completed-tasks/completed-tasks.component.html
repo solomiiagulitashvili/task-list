@@ -1,5 +1,8 @@
 <div class="completedTasks">
-  <ul class="task-list" *ngFor="let task of completedTasks$ | async">
+  <ul
+    class="task-list"
+    *ngFor="let task of completedTasks$ | async | filter: filterArg"
+  >
     <app-task-item [task]="task"></app-task-item>
   </ul>
 </div>

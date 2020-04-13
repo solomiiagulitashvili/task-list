@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TasksComponent } from './tasks.component';
-import { TaskItemComponent } from './task-item/task-item.component';
-import { ProgressBarModule } from 'primeng/progressbar';
-import { ButtonModule } from 'primeng/button';
+import { TaskItemModule } from './task-item/task-item.module';
 
 @NgModule({
-  declarations: [TasksComponent, TaskItemComponent],
-  imports: [CommonModule, ProgressBarModule, ButtonModule],
+  declarations: [TasksComponent],
+  imports: [CommonModule, TaskItemModule],
   exports: [TasksComponent],
 })
 export class TasksModule {}
