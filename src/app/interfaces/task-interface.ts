@@ -1,3 +1,5 @@
+import { ICategory } from './category-interface';
+
 export interface ITask {
   title: string;
   id: string;
@@ -5,6 +7,6 @@ export interface ITask {
   date: string;
   steps: number;
   level: number;
-  category: string;
+  category: ICategory;
   progress: number;
 }

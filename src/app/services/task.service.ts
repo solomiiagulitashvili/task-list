@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ITask } from '../interfaces/task-interface';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',

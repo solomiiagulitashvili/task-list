@@ -4,6 +4,8 @@ import { TaskService } from '../services/task.service';
 import { CategoriesService } from '../services/categories.service';
 import { nanoid } from 'nanoid';
 import { ICategory } from '../interfaces/category-interface';
+import { Observable, from } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-task',
@@ -17,17 +19,17 @@ export class AddTaskComponent implements OnInit {
     level: new FormControl('', [Validators.required]),
     steps: new FormControl('', [Validators.required]),
   });
-  categories: ICategory[] = [
-    { name: 'career', id: 'jkjl' },
-    { name: 'sport', id: 'khlk' },
-  ];
+  categoryNames: [];
 
   constructor(
     private taskService: TaskService,
     private categoriesService: CategoriesService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.categoryNames = this.categoriesService.getCategories();
+    console.log(this.categoryNames);
+  }
 
   onSubmit() {
     let task = this.form.value;
@@ -36,9 +38,5 @@ export class AddTaskComponent implements OnInit {
     task.completed = false;
     task.progress = 0;
     this.taskService.onAddTask(task);
-    // let category: ICategory;
-    // category.name = this.form.value.selectedCategory;
-    // category.id = nanoid();
-    // this.categoriesService.onAddCategory(category);
   }
 }

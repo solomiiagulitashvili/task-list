@@ -1,1 +1,39 @@
-<p>settings works!</p>
+<div class="categories">
+  <ul class="categories-list" *ngFor="let category of categories$ | async">
+    <li class="category_item">
+      <h3>{{ category.name }}</h3>
+      <button
+        pButton
+        type="button"
+        icon="pi pi-times"
+        class="ui-button-danger"
+        (click)="onDeleteCategory(category.id)"
+      ></button>
+    </li>
+  </ul>
+</div>
+<div class="add-category">
+  <h2>Add category</h2>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div class="form">
+      <span>Category name</span>
+      <span class="ui-float-label">
+        <input
+          id="name"
+          type="text"
+          size="60"
+          pInputText
+          class="form-control"
+          formControlName="name"
+        />
+        <label for="name">Category name</label>
+      </span>
+      <button
+        pButton
+        type="submit"
+        label="Add category"
+        class="ui-button-raised add-btn"
+      ></button>
+    </div>
+  </form>
+</div>

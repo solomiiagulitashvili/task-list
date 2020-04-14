@@ -11,11 +11,11 @@ import { AddTaskModule } from './add-task/add-task.module';
 import { FooterComponent } from './footer/footer.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { StatisticsModule } from './statistics/statistics.module';
+import { SettingsModule } from './settings/settings.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SettingsComponent,
     FooterComponent,
     HeaderComponent,
     CategoriesComponent,
@@ -28,6 +28,7 @@ import { StatisticsModule } from './statistics/statistics.module';
     TasksModule,
     CompletedTasksModule,
     StatisticsModule,
+    SettingsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
