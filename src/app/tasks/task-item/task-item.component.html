@@ -1,6 +1,6 @@
 <div class="task-item">
   <h3>{{ task.title }}</h3>
-  <p>{{ task.category }}</p>
+  <p>{{ task.selectedCategory.name }}</p>
   <div class="progress-wrapper">
     <p-progressBar [value]="task.progress"></p-progressBar>
     <div class="btns-wrapper">

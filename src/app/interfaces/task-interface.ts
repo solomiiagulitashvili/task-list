@@ -7,6 +7,6 @@ export interface ITask {
   date: string;
   steps: number;
   level: number;
-  category: ICategory;
+  selectedCategory: ICategory;
   progress: number;
 }

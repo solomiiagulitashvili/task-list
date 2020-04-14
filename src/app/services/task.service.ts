@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { ITask } from '../interfaces/task-interface';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, from } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -8,9 +9,12 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class TaskService {
   constructor() {}
 
+  @Input() id: string;
+
   private tasksSubject = new BehaviorSubject<ITask[]>(this.getTasks());
   tasks$: Observable<ITask[]> = this.tasksSubject.asObservable();
   localTasks: ITask[];
+  // filteredTasks$: Observable<ITask[]>;
   ngOnInit() {
     this.tasks$.subscribe();
   }
@@ -73,5 +77,10 @@ export class TaskService {
     console.log(deleted);
     localStorage.setItem('tasks', JSON.stringify(deleted));
     this.tasksSubject.next(deleted);
+  }
+
+  showTasks(id: string) {
+    let tasks = this.getTasks();
+    return tasks.filter((task) => task.selectedCategory.id == id);
   }
 }

@@ -1,10 +1,33 @@
-<div class="tasks">
+<div class="btns-wrapper">
+  <button
+    pButton
+    type="button"
+    label="All tasks"
+    class="ui-button-raised"
+    (click)="showAll()"
+  ></button>
+  <button
+    pButton
+    type="button"
+    label="Tasks by category"
+    class="ui-button-raised"
+    (click)="showByCategory()"
+  ></button>
+</div>
+<div class="tasks" *ngIf="!Category && all">
   <ul class="task-list" *ngFor="let task of tasks$ | async">
     <app-task-item [task]="task"></app-task-item>
   </ul>
 </div>
-<!-- <div class="tasks" *ngIf="category">
-  <ul class="task-list">
+<div class="categories" *ngIf="Category">
+  <ul class="categories-list" *ngFor="let category of categories$ | async">
+    <li class="category_item" (click)="showTasks(category.id)">
+      {{ category.name }}
+    </li>
+  </ul>
+</div>
+<div class="tasks" *ngIf="Category && !all && id">
+  <ul class="task-list" *ngFor="let task of filteredTasks">
     <app-task-item [task]="task"></app-task-item>
   </ul>
-</div> -->
+</div>
