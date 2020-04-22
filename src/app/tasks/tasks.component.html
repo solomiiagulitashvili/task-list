@@ -19,15 +19,18 @@
     <app-task-item [task]="task"></app-task-item>
   </ul>
 </div>
-<div class="categories" *ngIf="Category">
+<div class="categories" *ngIf="Category && !all">
   <ul class="categories-list" *ngFor="let category of categories$ | async">
-    <li class="category_item" (click)="showTasks(category.id)">
+    <li class="category_item" (click)="filterTasks(category.id)">
       {{ category.name }}
     </li>
   </ul>
 </div>
 <div class="tasks" *ngIf="Category && !all && id">
-  <ul class="task-list" *ngFor="let task of filteredTasks">
+  <ul
+    class="task-list"
+    *ngFor="let task of tasks$ | async | filterByCategory: id"
+  >
     <app-task-item [task]="task"></app-task-item>
   </ul>
 </div>

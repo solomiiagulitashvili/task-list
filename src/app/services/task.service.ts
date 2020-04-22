@@ -1,29 +1,24 @@
 import { Injectable, Input } from '@angular/core';
 import { ITask } from '../interfaces/task-interface';
 import { BehaviorSubject, Observable, from } from 'rxjs';
-import { filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  constructor() {}
-
   @Input() id: string;
 
   private tasksSubject = new BehaviorSubject<ITask[]>(this.getTasks());
   tasks$: Observable<ITask[]> = this.tasksSubject.asObservable();
   localTasks: ITask[];
-  // filteredTasks$: Observable<ITask[]>;
+
   ngOnInit() {
     this.tasks$.subscribe();
   }
 
   onAddTask(task: ITask) {
     this.localTasks = this.getTasks();
-    // console.log(this.localTasks);
     this.localTasks.push(task);
-    // console.log(this.localTasks);
     localStorage.setItem('tasks', JSON.stringify(this.localTasks));
     this.tasksSubject.next(this.localTasks);
   }
@@ -49,14 +44,14 @@ export class TaskService {
     }
     localStorage.setItem('tasks', JSON.stringify(this.localTasks));
     this.tasksSubject.next(this.localTasks);
-    // console.log(this.localTasks);
   }
+
   onRemoveProgress(id) {
     this.localTasks = this.getTasks();
     let myTask = this.localTasks.find((task) => {
       return task.id === id;
     });
-    if (myTask.progress >= 100) {
+    if (myTask.progress <= 0) {
       return;
     }
     myTask.progress = myTask.progress - 10;
@@ -77,10 +72,5 @@ export class TaskService {
     console.log(deleted);
     localStorage.setItem('tasks', JSON.stringify(deleted));
     this.tasksSubject.next(deleted);
-  }
-
-  showTasks(id: string) {
-    let tasks = this.getTasks();
-    return tasks.filter((task) => task.selectedCategory.id == id);
   }
 }

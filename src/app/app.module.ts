@@ -8,18 +8,12 @@ import { TasksModule } from './tasks/tasks.module';
 import { CompletedTasksModule } from './completed-tasks/completed-tasks.module';
 import { AddTaskModule } from './add-task/add-task.module';
 import { FooterComponent } from './footer/footer.component';
-import { CategoriesComponent } from './categories/categories.component';
 import { StatisticsModule } from './statistics/statistics.module';
 import { SettingsModule } from './settings/settings.module';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FooterComponent,
-    HeaderComponent,
-    CategoriesComponent,
-  ],
+  declarations: [AppComponent, FooterComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

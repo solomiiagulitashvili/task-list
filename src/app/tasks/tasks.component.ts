@@ -11,8 +11,8 @@ import { CategoriesService } from '../services/categories.service';
   styleUrls: ['./tasks.component.scss'],
 })
 export class TasksComponent implements OnInit {
-  tasks$: Observable<ITask[]>;
-  categories$: Observable<ICategory[]>;
+  tasks$: Observable<ITask[]> = this.taskService.tasks$;
+  categories$: Observable<ICategory[]> = this.categoriesService.categories$;
   filteredTasks: ITask[];
   @Input() task: ITask;
   @Input() category: ICategory;
@@ -26,8 +26,6 @@ export class TasksComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.tasks$ = this.taskService.tasks$;
-    this.categories$ = this.categoriesService.categories$;
     this.Category = false;
     this.all = false;
     this.id = false;
@@ -41,10 +39,7 @@ export class TasksComponent implements OnInit {
     this.Category = true;
     this.all = false;
   }
-
-  showTasks(id) {
-    console.log(id);
-    this.filteredTasks = this.taskService.showTasks(id);
-    this.id = true;
+  filterTasks(id) {
+    this.id = id;
   }
 }

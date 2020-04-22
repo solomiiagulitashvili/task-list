@@ -7,8 +7,6 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class CategoriesService {
-  constructor() {}
-
   private categoriesSubject = new BehaviorSubject<ICategory[]>(
     this.getCategories()
   );
@@ -21,9 +19,7 @@ export class CategoriesService {
 
   onAddCategory(category: ICategory) {
     this.localCategories = this.getCategories();
-    // console.log(this.localTasks);
     this.localCategories.push(category);
-    // console.log(this.localTasks);
     localStorage.setItem('categories', JSON.stringify(this.localCategories));
     this.categoriesSubject.next(this.localCategories);
   }
